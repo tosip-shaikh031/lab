@@ -55,6 +55,8 @@ int main() {
         printf("\n");
 
         // To simulate orphan or zombie, we’ll use sleep() later
+        // exit(0); // Uncomment for normal execution
+        printf("[Child] Exiting without wait. Parent PID now: %d\n", getppid());
         sleep(30); // Uncomment for ORPHAN
     }
     else {
@@ -65,11 +67,9 @@ int main() {
         for (int i = 0; i < n; i++)
             printf("%d ", arr[i]);
         printf("\n");
-
+        exit(0); 
         // Uncomment wait() for normal or zombie demonstration
         // wait(NULL); // Wait for child to finish (no zombie)
-        // printf("[Parent] Child completed. Parent exiting.\n");
-        // exit(0);
         // sleep(100); // Uncomment for ZOMBIE
     }
 

@@ -13,11 +13,11 @@ int binarySearch(int arr[], int n, int key) {
     }
     return -1;
 }
-int main(int argc, char *argv[]) {
-    int n = argc - 1;
+int main(int argc, char *argv[]) { // argc is the argument count, argv is the argument vector
+    int n = argc - 1; // how n = argc - 1? because first argument is the program name
     int arr[n];
     for (int i = 1; i < argc; i++)
-        arr[i-1] = atoi(argv[i]);
+        arr[i-1] = atoi(argv[i]); // convert string to integer
     printf("Child process received sorted array: ");
     for (int i = 0; i < n; i++)
         printf("%d ", arr[i]);

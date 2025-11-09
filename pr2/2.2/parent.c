@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <sys/wait.h>
 void sort(int arr[], int n) {
-    for(int i=0; i<n-1; i++) {
-        for(int j=0; j<n-i-1; j++) {
+    for(int i = 0; i < n-1; i++) {
+        for(int j = 0; j < n-i-1; j++) {
             if(arr[j] > arr[j+1]) {
                 int temp = arr[j];
                 arr[j] = arr[j+1];
@@ -19,7 +19,7 @@ int main() {
     scanf("%d", &n);
     int arr[n];
     printf("Enter %d elements: ", n);
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
         scanf("%d", &arr[i]);
     pid_t pid = fork();
     if (pid < 0) {
@@ -27,23 +27,24 @@ int main() {
         return 1;
     }
     else if (pid == 0) {
+        
     }
     else {
         sort(arr, n);
         printf("\nSorted Array: ");
-        for(int i=0; i<n; i++)
+        for(int i = 0; i < n; i++)
             printf("%d ", arr[i]);
         printf("\n");
-        char *args[n + 3];
+        char *args[n + 3]; // +3 for "./child", NULL, and array elements
         args[0] = "./child";
-        for(int i=0; i<n; i++) {
-            char *num = malloc(10);
-            sprintf(num, "%d", arr[i]);
+        for(int i = 0; i < n; i++) {
+            char *num = malloc(10); // allocate memory for each number
+            sprintf(num, "%d", arr[i]); // convert int to string
             args[i+1] = num;
         }
-        args[n+1] = NULL;
-        char *envp[] = {NULL};
-        execve("./child", args, envp);
+        args[n+1] = NULL; // NULL terminate the args array
+        char *envp[] = {NULL}; // environment variables
+        execve("./child", args, envp); // execute child process
         perror("execve failed");
         wait(NULL);
     }

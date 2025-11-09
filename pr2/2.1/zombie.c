@@ -78,4 +78,4 @@ int main() {
 
 
 // this command to check
-// ps -ef | grep a.out
+// ps -elf | grep a.out 
