@@ -55,7 +55,7 @@ int main() {
         printf("\n");
 
         // To simulate orphan or zombie, we’ll use sleep() later
-        // sleep(5); // Uncomment for ORPHAN
+        sleep(30); // Uncomment for ORPHAN
     }
     else {
         // ---- PARENT PROCESS ----
@@ -67,11 +67,28 @@ int main() {
         printf("\n");
 
         // Uncomment wait() for normal or zombie demonstration
-        wait(NULL); // Wait for child to finish (no zombie)
-        printf("[Parent] Child completed. Parent exiting.\n");
-
-        // sleep(10); // Uncomment for ZOMBIE
+        // wait(NULL); // Wait for child to finish (no zombie)
+        // printf("[Parent] Child completed. Parent exiting.\n");
+        // exit(0);
+        // sleep(100); // Uncomment for ZOMBIE
     }
 
     return 0;
 }
+
+// ┌──(kuli💀)@[192~/Documents/os]
+// └───> ps -elf | grep a.out
+// 0 T kuli        4568    3113  0  85   5 -   640 do_sig 14:45 pts/0    00:00:00 ./a.out
+// 0 T kuli        4576    3113  0  85   5 -   640 do_sig 14:45 pts/0    00:00:00 ./a.out
+// 1 S kuli        4842    1444  0  80   0 -   640 hrtime 14:50 pts/0    00:00:00 ./a.out
+// 1 S kuli        4859    1444  0  80   0 -   640 hrtime 14:51 pts/0    00:00:00 ./a.out
+// 0 S kuli        4862    3246  0  80   0 -  1632 pipe_r 14:51 pts/1    00:00:00 grep --color=auto a.out
+                                                                               
+// ┌──(kuli💀)@[192~/Documents/os]
+// └───> ps -p 1444 -o pid,ppid,comm
+
+//     PID    PPID COMMAND
+//    1444       1 systemd
+                                                                               
+// ┌──(kuli💀)@[192~/Documents/os]
+// └───>

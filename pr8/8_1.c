@@ -144,3 +144,11 @@ int main() {
 
     return 0;
 }
+
+// C-Look and LOOK Difference: 
+// C-Look is a more efficient version of LOOK, as it only services requests in one direction and jumps back to the beginning without going to the end of the disk.
+// This reduces the overall seek time and improves performance, especially in systems with a high number of requests.
+
+// C-Scan and SCAN Difference:
+// C-Scan treats the disk as a circular list, servicing requests in one direction and jumping back to the start without servicing requests on the return trip.
+// This can lead to more uniform wait times for requests compared to SCAN, which services requests in both directions.

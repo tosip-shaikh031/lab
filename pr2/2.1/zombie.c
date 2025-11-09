@@ -55,7 +55,7 @@ int main() {
         printf("\n");
 
         // To simulate orphan or zombie, we’ll use sleep() later
-        // sleep(5); // Uncomment for ORPHAN
+        // sleep(30); // Uncomment for ORPHAN
     }
     else {
         // ---- PARENT PROCESS ----
@@ -67,11 +67,15 @@ int main() {
         printf("\n");
 
         // Uncomment wait() for normal or zombie demonstration
-        wait(NULL); // Wait for child to finish (no zombie)
-        printf("[Parent] Child completed. Parent exiting.\n");
-
-        // sleep(10); // Uncomment for ZOMBIE
+        // wait(NULL); // Wait for child to finish (no zombie)
+        // printf("[Parent] Child completed. Parent exiting.\n");
+        // exit(0);
+        sleep(100); // Uncomment for ZOMBIE
     }
 
     return 0;
 }
+
+
+// this command to check
+// ps -ef | grep a.out
